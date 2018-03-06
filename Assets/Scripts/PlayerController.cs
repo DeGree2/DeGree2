@@ -24,13 +24,12 @@ public class PlayerController : MonoBehaviour {
         // Update for moovement
         if (Input.anyKey)
             Move();
-
 	}
     void Move()
     {
         // Calculate right and up movement values
-        Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
-        Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("Vertical");
+        Vector3 rightMovement = right * moveSpeed * Time.deltaTime * Input.GetAxis("HorizontalKey");
+        Vector3 upMovement = forward * moveSpeed * Time.deltaTime * Input.GetAxis("VerticalKey");
 
         //Set heading direction for our object
         Vector3 heading = Vector3.Normalize(rightMovement + upMovement);
