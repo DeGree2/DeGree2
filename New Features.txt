@@ -1,4 +1,5 @@
-File used for scene: V_1.00.unity under Assets.
+
+File used for scene: V_1.00.unity under Assets/Levels.
 New features:
 1.Field of vision:
 *Main script. EnemyVision (vision mechanics), EnemyVisionEditor (used for easier vision adjustments in scene management). 
