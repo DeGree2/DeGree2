@@ -5,10 +5,17 @@ using System.Collections;
 public class Inventory : MonoBehaviour {
     //CHA1 & CHA3 - Milda Petrikaitė IFF-6/5
 
-    public GameObject[] inventory = new GameObject[10]; //inventory array to store items
+    public GameObject[] inventory = new GameObject[10];//inventory array to store items
     public Button[] InventoryButtons = new Button[10]; //array for display
     public int activeSlot = -1; //active item slot, -1 means not selected
-    
+
+    public void Start()
+    {
+        for(int i = 0; i<10; i++)
+        {
+            inventory[i] = null;
+        }
+    }
     public void AddItem(GameObject item)
     {
         bool itemAdded = false; //to determine whether the item was added (for inv is full case)
