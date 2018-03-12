@@ -17,12 +17,15 @@ public class PlayerController : MonoBehaviour {
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
 		
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         // Update for moovement
-        if (Input.anyKey)
+        //If player is dead, movement is disabled.
+        if (HealthBarScript.health <= 0) { }
+
+        else if (Input.anyKey)
             Move();
 
 	}
@@ -40,4 +43,6 @@ public class PlayerController : MonoBehaviour {
         transform.position += rightMovement;
         transform.position += upMovement;
     }
+
+   
 }

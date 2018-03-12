@@ -47,9 +47,20 @@ public class PlayerInteract : MonoBehaviour {
         {
             currentInterObject = other.gameObject;
             currentInterObjScript = currentInterObject.GetComponent<InteractionObject>();
+
+        }
+
+
+        //Živilė. Player uses health bonus.
+        if (other.CompareTag("bonusHealth"))
+        {
+            if (HealthBarScript.health < 100f)
+            {
+                other.gameObject.SetActive(false);
+                HealthBarScript.TakeBonus();
+            }
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         //when item becomes out of range, it is not current interactable object anymore (can't pick up)

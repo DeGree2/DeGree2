@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Globalization;
 
 
+
 public class EnemyBehaviour : MonoBehaviour
 {
 
@@ -179,6 +180,13 @@ public class EnemyBehaviour : MonoBehaviour
             target = new Vector3(X[current], Y[current], Z[current]);
         }
     }
-
+    //Živilė. Player is damaged if touched by enemy
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+           HealthBarScript.Damage();
+        }
+    }
 
 }
