@@ -20,6 +20,24 @@ public class PlayerInteract : MonoBehaviour {
                 inventory.AddItem(currentInterObject);
             }
         }
+
+        //changes active item to the left one from the current on inventory array
+        if (Input.GetButtonDown("ActiveLeft"))
+        {
+            inventory.SetActiveLeft();
+        }
+
+        //changes active item to the right one from the current on inventory array
+        if (Input.GetButtonDown("ActiveRight"))
+        {
+            inventory.SetActiveRight();
+        }
+
+        //uses currently active item from inventory
+        if (Input.GetButtonDown("UseActiveItem"))
+        {
+            inventory.UseActive();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,12 +45,22 @@ public class PlayerInteract : MonoBehaviour {
         //when item is in range, it becomes current interactable object (can be picked up)
         if (other.CompareTag("interObject"))
         {
-            //Debug.Log(other.name);
             currentInterObject = other.gameObject;
             currentInterObjScript = currentInterObject.GetComponent<InteractionObject>();
+
+        }
+
+
+        //Živilė. Player uses health bonus.
+        if (other.CompareTag("bonusHealth"))
+        {
+            if (HealthBarScript.health < 100f)
+            {
+                other.gameObject.SetActive(false);
+                HealthBarScript.TakeBonus();
+            }
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         //when item becomes out of range, it is not current interactable object anymore (can't pick up)
